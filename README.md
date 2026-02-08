@@ -1,8 +1,8 @@
 # *Bytewave* 
-*leader - Chirag Behere
-*Member 2- Vedika Girase
-*Member 3-Satyam Sonar
-*Member 4-Laxmi Sonawane
+* leader - Chirag Behere
+* Member 2- Vedika Girase
+* Member 3-Satyam Sonar
+* Member 4-Laxmi Sonawane
 
 
 # 🏥 Prescription-pal
