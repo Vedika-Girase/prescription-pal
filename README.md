@@ -1,73 +1,273 @@
-# Welcome to your Lovable project
+# *Bytewave* 
+*leader - Chirag Behere
+*Member 2- Vedika Girase
+*Member 3-Satyam Sonar
+*Member 4-Laxmi Sonawane
 
-## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+# 🏥 Prescription-pal
 
-## How can I edit this code?
+### Smart Digital Prescription & Medicine Reminder Platform
 
-There are several ways of editing your application.
+> A hospital-ready web platform that digitizes prescriptions, improves medicine adherence, and streamlines coordination between doctors, medical stores, and patients.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 🚨 Problem Statement
 
-Changes made via Lovable will be committed automatically to this repo.
+In many hospitals and clinics:
 
-**Use your preferred IDE**
+* Prescriptions are handwritten and error-prone
+* Patients forget to take medicines on time
+* Doctors repeatedly enter the same patient details
+* Medical stores struggle with prescription clarity
+* There is no centralized reminder or tracking system
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+These gaps lead to **missed doses, delayed treatment, and poor patient outcomes**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+---
 
-Follow these steps:
+## 💡 Our Solution – MediMind
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+**MediMind** is a role-based healthcare web application that:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+* Digitizes prescriptions
+* Automates medicine reminders
+* Connects doctors, medical stores, and patients on one platform
+* Reduces manual work and human errors
 
-# Step 3: Install the necessary dependencies.
-npm i
+Designed to be **simple, scalable, and hospital-ready**.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+---
+
+## 🎯 Key Features
+
+### 👨‍⚕️ Doctor Dashboard
+
+* Secure login
+* Create digital prescriptions
+* Add medicines with dosage & timings
+* Assign prescriptions to patients and medical stores
+* Enable automated reminders
+
+---
+
+### 🏥 Medical Store Dashboard
+
+* View doctor prescriptions
+* Prepare medicines
+* Update status:
+
+  * Pending
+  * Ready
+  * Given
+
+---
+
+### 👤 Patient Dashboard
+
+* View doctor prescriptions
+* Add own prescriptions manually
+* Receive browser-based medicine reminders
+* Track medicine intake:
+
+  * Taken
+  * Missed
+
+---
+
+## 🔄 System Workflow
+
+```
+Doctor → Creates Prescription
+        ↓
+Medical Store ← Prepares Medicines
+        ↓
+Patient ← Views Prescription & Receives Reminders
 ```
 
-**Edit a file directly in GitHub**
+All roles operate on a **single centralized system**.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🧠 Why MediMind is Different
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+* ❌ No handwritten prescriptions
+* ⏰ Automated medicine reminders
+* 📊 Medicine intake tracking
+* 🔐 Role-based access control
+* 🌐 Web-based (no app install required)
+* 📱 Easily extendable to mobile apps
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 🛠️ Tech Stack
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Frontend
 
-## How can I deploy this project?
+* HTML
+* CSS
+* JavaScript
+* Bootstrap (UI enhancement)
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Backend
 
-## Can I connect a custom domain to my Lovable project?
+* Node.js
+* Express.js
 
-Yes, you can!
+### Database
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+* MySQL (primary)
+* MongoDB (optional alternative)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Notifications
+
+* Browser Notifications
+* JavaScript Timers
+* Backend Cron Jobs
+
+---
+
+## 📁 Project Structure
+
+```
+medimind-website/
+│
+├── backend/
+│   ├── server.js
+│   ├── db.js
+│   ├── routes/
+│   └── controllers/
+│
+├── frontend/
+│   ├── login.html
+│   ├── doctor.html
+│   ├── patient.html
+│   ├── medical.html
+│   ├── css/
+│   └── js/
+│
+└── README.md
+```
+
+---
+
+## 🗃️ Database Schema (Simplified)
+
+**Users**
+
+* id, name, email, password, role
+
+**Prescriptions**
+
+* id, doctor_id, patient_id, medical_id, date, notes
+
+**Medicines**
+
+* id, prescription_id, name, dosage, duration
+
+**Reminders**
+
+* id, patient_id, medicine_id, time, status
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/medimind.git
+cd medimind
+```
+
+### 2️⃣ Backend Setup
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+### 3️⃣ Frontend
+
+Open `frontend/login.html` in your browser.
+
+---
+
+## ✅ MVP Scope (Hackathon Ready)
+
+✔ Role-based login
+✔ Doctor creates prescriptions
+✔ Patient views prescriptions
+✔ Browser notification reminders
+
+---
+
+## 🔮 Future Enhancements
+
+* Mobile app (Flutter)
+* Alarm-based reminders
+* Automated call reminders
+* QR-based patient registration
+* Doctor queue & token system
+* AI-based medicine adherence analysis
+
+---
+
+## 🧪 Use Cases
+
+* Hospitals & Clinics
+* Medical Stores
+* Elderly Patient Care
+* Rural Healthcare Systems
+* Hackathons & Academic Projects
+
+---
+
+## 🌍 Impact
+
+* Reduces missed medication doses
+* Improves patient adherence
+* Saves doctors’ time
+* Minimizes prescription errors
+* Digitizes small and medium healthcare centers
+
+---
+
+## 🏆 Hackathon Readiness
+
+* Real-world healthcare problem
+* Scalable architecture
+* Production-inspired workflow
+* Clean UI & UX
+* High social impact
+
+---
+
+## 👥 Team
+
+* **Project Name:** MediMind
+* **Domain:** Healthcare Technology
+* **Built For:** Hackathons & Innovation Challenges
+
+---
+
+## 📜 License
+
+This project is developed for educational, innovation, and hackathon purposes.
+
+---
+
+### 🔥 Pro Hackathon Tip
+
+Add **screenshots**, **short demo video**, and a **live link** in this README — judges love visual proof.
+
+If you want next:
+
+* 🎥 Demo video script
+* 🖼️ Screenshot checklist
+* 📊 Architecture diagram
+* 🧾 Pitch deck content
+
+Just say the word 🚀
