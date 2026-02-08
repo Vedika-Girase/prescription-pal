@@ -82,6 +82,51 @@ export type Database = {
         }
         Relationships: []
       }
+      patients: {
+        Row: {
+          address: string | null
+          age: number | null
+          blood_group: string | null
+          created_at: string
+          email: string | null
+          full_name: string
+          gender: string | null
+          id: string
+          phone: string | null
+          registered_by: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          address?: string | null
+          age?: number | null
+          blood_group?: string | null
+          created_at?: string
+          email?: string | null
+          full_name: string
+          gender?: string | null
+          id?: string
+          phone?: string | null
+          registered_by?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          address?: string | null
+          age?: number | null
+          blood_group?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          gender?: string | null
+          id?: string
+          phone?: string | null
+          registered_by?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       prescription_medicines: {
         Row: {
           created_at: string
@@ -132,8 +177,9 @@ export type Database = {
           doctor_id: string | null
           id: string
           notes: string | null
-          patient_id: string
+          patient_id: string | null
           reminders_enabled: boolean
+          token_id: string | null
           updated_at: string
         }
         Insert: {
@@ -141,8 +187,9 @@ export type Database = {
           doctor_id?: string | null
           id?: string
           notes?: string | null
-          patient_id: string
+          patient_id?: string | null
           reminders_enabled?: boolean
+          token_id?: string | null
           updated_at?: string
         }
         Update: {
@@ -150,11 +197,20 @@ export type Database = {
           doctor_id?: string | null
           id?: string
           notes?: string | null
-          patient_id?: string
+          patient_id?: string | null
           reminders_enabled?: boolean
+          token_id?: string | null
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "prescriptions_token_id_fkey"
+            columns: ["token_id"]
+            isOneToOne: false
+            referencedRelation: "tokens"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -221,6 +277,44 @@ export type Database = {
           },
         ]
       }
+      tokens: {
+        Row: {
+          assigned_doctor_id: string | null
+          code: string
+          created_at: string
+          id: string
+          patient_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_doctor_id?: string | null
+          code: string
+          created_at?: string
+          id?: string
+          patient_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_doctor_id?: string | null
+          code?: string
+          created_at?: string
+          id?: string
+          patient_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tokens_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -247,6 +341,15 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      doctor_has_dose_access: {
+        Args: { _doctor_id: string; _pm_id: string }
+        Returns: boolean
+      }
+      doctor_has_patient: {
+        Args: { _doctor_id: string; _patient_id: string }
+        Returns: boolean
+      }
+      generate_token_code: { Args: never; Returns: string }
       get_user_role: {
         Args: { _user_id: string }
         Returns: Database["public"]["Enums"]["app_role"]
@@ -256,6 +359,17 @@ export type Database = {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
+        Returns: boolean
+      }
+      is_doctor: { Args: { _user_id: string }; Returns: boolean }
+      is_receptionist: { Args: { _user_id: string }; Returns: boolean }
+      is_store: { Args: { _user_id: string }; Returns: boolean }
+      patient_owns_record: {
+        Args: { _patient_id: string; _user_id: string }
+        Returns: boolean
+      }
+      user_has_prescription_access: {
+        Args: { _prescription_id: string; _user_id: string }
         Returns: boolean
       }
     }
